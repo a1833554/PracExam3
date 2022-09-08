@@ -29,14 +29,17 @@ MusicBox *StoreShelf::get_contents(){
 // returns true and adds music box to shelf if there is sufficient space
 // otherwise returns false
 bool StoreShelf::add_music_box(MusicBox a_music_box){
-    if (curr_width <= width){
-        songs[count] = a_music_box;
-        curr_width = curr_width + songs[count].get_width();
-        count++;
-         return true;
-        } else {
-        return false; 
-        } 
+     songs[count] = a_music_box;
+     curr_width = curr_width + songs[count].get_width();
+    if (curr_width > width - songs[count].get_width()){
+
+        return false;
+    }else{
+       count++;
+        return true;
+    }
+        
+
 }
 
 StoreShelf::~StoreShelf(){}
